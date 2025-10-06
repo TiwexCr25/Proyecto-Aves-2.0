@@ -1,0 +1,187 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl4xgrtahs5m4"]
+
+[ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_f6udf"]
+[ext_resource type="Texture2D" uid="uid://chcxvl0s5txbl" path="res://Resources/Buttons/Botones Largos/UI-03.png" id="2_r34rm"]
+[ext_resource type="Texture2D" uid="uid://cd6u11lixss4n" path="res://Resources/Buttons/Botones Largos/UI-04.png" id="3_2wwxx"]
+[ext_resource type="Texture2D" uid="uid://dncs88scmr6nw" path="res://Resources/Icon/config.png" id="4_3amdw"]
+[ext_resource type="Texture2D" uid="uid://cq1jrhoxo86wm" path="res://Resources/Icon/exit.png" id="5_1xcnr"]
+
+[node name="main" type="Node2D"]
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Background" type="TextureRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_f6udf")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="verticalSection" type="VBoxContainer" parent="UI/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -396.5
+offset_top = -156.0
+offset_right = 396.5
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="Label" parent="UI/CanvasLayer/verticalSection"]
+layout_mode = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 75
+text = "Plumas Sabias"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="UI/CanvasLayer/verticalSection"]
+custom_minimum_size = Vector2(300, 78)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_r34rm")
+texture_pressed = ExtResource("3_2wwxx")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/PlayButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 45
+text = "Jugar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BirthButton" type="TextureButton" parent="UI/CanvasLayer/verticalSection"]
+custom_minimum_size = Vector2(300, 78)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_r34rm")
+texture_pressed = ExtResource("3_2wwxx")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/BirthButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 45
+text = "Aves"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatisticsButton" type="TextureButton" parent="UI/CanvasLayer/verticalSection"]
+custom_minimum_size = Vector2(300, 78)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_r34rm")
+texture_pressed = ExtResource("3_2wwxx")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/StatisticsButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 45
+text = "Estadisticas"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HorizontalSection" type="HBoxContainer" parent="UI/CanvasLayer/verticalSection"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ExitButton" type="TextureButton" parent="UI/CanvasLayer/verticalSection/HorizontalSection"]
+custom_minimum_size = Vector2(150, 78)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_r34rm")
+texture_pressed = ExtResource("3_2wwxx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/verticalSection/HorizontalSection/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ExitImage" type="TextureRect" parent="UI/CanvasLayer/verticalSection/HorizontalSection/ExitButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_3amdw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ConfigButton" type="TextureButton" parent="UI/CanvasLayer/verticalSection/HorizontalSection"]
+custom_minimum_size = Vector2(150, 78)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_r34rm")
+texture_pressed = ExtResource("3_2wwxx")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/verticalSection/HorizontalSection/ConfigButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ConfigImage" type="TextureRect" parent="UI/CanvasLayer/verticalSection/HorizontalSection/ConfigButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_1xcnr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Creator" type="Label" parent="UI/CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -59.0
+offset_right = 154.0
+offset_bottom = -14.0
+grow_vertical = 0
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 32
+text = "By Tiwex"
