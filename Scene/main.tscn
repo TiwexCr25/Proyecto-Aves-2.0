@@ -1,12 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl4xgrtahs5m4"]
+[gd_scene load_steps=13 format=3 uid="uid://bl4xgrtahs5m4"]
 
 [ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_f6udf"]
 [ext_resource type="Texture2D" uid="uid://chcxvl0s5txbl" path="res://Resources/Buttons/Botones Largos/UI-03.png" id="2_r34rm"]
 [ext_resource type="Texture2D" uid="uid://cd6u11lixss4n" path="res://Resources/Buttons/Botones Largos/UI-04.png" id="3_2wwxx"]
+[ext_resource type="Script" uid="uid://c68ae2vm5ehr" path="res://Scripts/Button.gd" id="4_1xcnr"]
 [ext_resource type="Texture2D" uid="uid://dncs88scmr6nw" path="res://Resources/Icon/config.png" id="4_3amdw"]
 [ext_resource type="Texture2D" uid="uid://cq1jrhoxo86wm" path="res://Resources/Icon/exit.png" id="5_1xcnr"]
+[ext_resource type="PackedScene" uid="uid://dk2bko3axqr1u" path="res://Scene/lobby.tscn" id="5_c2iwn"]
+[ext_resource type="PackedScene" uid="uid://6p0kn3qx0847" path="res://Scene/birds.tscn" id="5_ow1sv"]
+[ext_resource type="PackedScene" uid="uid://diqaad0hcec68" path="res://Scene/statistics.tscn" id="7_3pt4j"]
+[ext_resource type="Texture2D" uid="uid://dei318te3r1rd" path="res://Resources/Buttons/UIsmall.png" id="10_3pt4j"]
+[ext_resource type="Texture2D" uid="uid://dhy0xneb7011e" path="res://Resources/Buttons/Botones Pequeños/UI-3.png" id="11_mxd2g"]
+[ext_resource type="Texture2D" uid="uid://bv856t1d64mll" path="res://Resources/Buttons/Botones Pequeños/UI-4.png" id="12_0sxm5"]
 
-[node name="main" type="Node2D"]
+[node name="Main" type="Node2D"]
 
 [node name="UI" type="Node" parent="."]
 
@@ -53,6 +60,8 @@ texture_normal = ExtResource("2_r34rm")
 texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("4_1xcnr")
+Scene = ExtResource("5_c2iwn")
 
 [node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/PlayButton"]
 layout_mode = 1
@@ -76,6 +85,8 @@ texture_normal = ExtResource("2_r34rm")
 texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("4_1xcnr")
+Scene = ExtResource("5_ow1sv")
 
 [node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/BirthButton"]
 layout_mode = 1
@@ -99,6 +110,8 @@ texture_normal = ExtResource("2_r34rm")
 texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true
 stretch_mode = 4
+script = ExtResource("4_1xcnr")
+Scene = ExtResource("7_3pt4j")
 
 [node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/StatisticsButton"]
 layout_mode = 1
@@ -141,11 +154,11 @@ theme_override_constants/margin_bottom = 10
 
 [node name="ExitImage" type="TextureRect" parent="UI/CanvasLayer/verticalSection/HorizontalSection/ExitButton/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("4_3amdw")
+texture = ExtResource("5_1xcnr")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ConfigButton" type="TextureButton" parent="UI/CanvasLayer/verticalSection/HorizontalSection"]
+[node name="ConfigButton" type="TextureButton" parent="UI/CanvasLayer/verticalSection/HorizontalSection" node_paths=PackedStringArray("FloatingWindow")]
 custom_minimum_size = Vector2(150, 78)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -154,6 +167,9 @@ texture_normal = ExtResource("2_r34rm")
 texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("4_1xcnr")
+SetMode = 1
+FloatingWindow = NodePath("../../../ConfigFloatingWindow")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/verticalSection/HorizontalSection/ConfigButton"]
 layout_mode = 1
@@ -169,7 +185,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="ConfigImage" type="TextureRect" parent="UI/CanvasLayer/verticalSection/HorizontalSection/ConfigButton/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("5_1xcnr")
+texture = ExtResource("4_3amdw")
 expand_mode = 1
 stretch_mode = 5
 
@@ -185,3 +201,60 @@ grow_vertical = 0
 theme_override_constants/outline_size = 15
 theme_override_font_sizes/font_size = 32
 text = "By Tiwex"
+
+[node name="ConfigFloatingWindow" type="NinePatchRect" parent="UI/CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(250, 250)
+mouse_filter = 0
+texture = ExtResource("10_3pt4j")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 103
+patch_margin_top = 106
+patch_margin_right = 102
+patch_margin_bottom = 106
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/ConfigFloatingWindow"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_bottom = 70.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+
+[node name="closeButton" type="TextureButton" parent="UI/CanvasLayer/ConfigFloatingWindow/MarginContainer" node_paths=PackedStringArray("FloatingWindow")]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_mxd2g")
+texture_pressed = ExtResource("12_0sxm5")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_1xcnr")
+SetMode = 2
+FloatingWindow = NodePath("../..")
+
+[node name="X" type="Label" parent="UI/CanvasLayer/ConfigFloatingWindow/MarginContainer/closeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 45
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1

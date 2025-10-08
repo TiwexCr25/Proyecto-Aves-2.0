@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://6p0kn3qx0847"]
+
+[ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_eryla"]
+
+[node name="Birds" type="Node2D"]
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Background" type="TextureRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_eryla")
+expand_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="UI/CanvasLayer/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Birds"
