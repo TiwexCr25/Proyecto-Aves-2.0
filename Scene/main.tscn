@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bl4xgrtahs5m4"]
+[gd_scene load_steps=8 format=3 uid="uid://bl4xgrtahs5m4"]
 
 [ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_f6udf"]
 [ext_resource type="Texture2D" uid="uid://chcxvl0s5txbl" path="res://Resources/Buttons/Botones Largos/UI-03.png" id="2_r34rm"]
@@ -6,12 +6,7 @@
 [ext_resource type="Script" uid="uid://c68ae2vm5ehr" path="res://Scripts/Button.gd" id="4_1xcnr"]
 [ext_resource type="Texture2D" uid="uid://dncs88scmr6nw" path="res://Resources/Icon/config.png" id="4_3amdw"]
 [ext_resource type="Texture2D" uid="uid://cq1jrhoxo86wm" path="res://Resources/Icon/exit.png" id="5_1xcnr"]
-[ext_resource type="PackedScene" uid="uid://dk2bko3axqr1u" path="res://Scene/lobby.tscn" id="5_c2iwn"]
-[ext_resource type="PackedScene" uid="uid://6p0kn3qx0847" path="res://Scene/birds.tscn" id="5_ow1sv"]
-[ext_resource type="PackedScene" uid="uid://diqaad0hcec68" path="res://Scene/statistics.tscn" id="7_3pt4j"]
 [ext_resource type="Texture2D" uid="uid://dei318te3r1rd" path="res://Resources/Buttons/UIsmall.png" id="10_3pt4j"]
-[ext_resource type="Texture2D" uid="uid://dhy0xneb7011e" path="res://Resources/Buttons/Botones Pequeños/UI-3.png" id="11_mxd2g"]
-[ext_resource type="Texture2D" uid="uid://bv856t1d64mll" path="res://Resources/Buttons/Botones Pequeños/UI-4.png" id="12_0sxm5"]
 
 [node name="Main" type="Node2D"]
 
@@ -61,7 +56,8 @@ texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("4_1xcnr")
-Scene = ExtResource("5_c2iwn")
+SetMode = null
+ScenePath = "res://Scene/lobby.tscn"
 
 [node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/PlayButton"]
 layout_mode = 1
@@ -86,7 +82,7 @@ texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("4_1xcnr")
-Scene = ExtResource("5_ow1sv")
+SetMode = null
 
 [node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/BirthButton"]
 layout_mode = 1
@@ -111,7 +107,7 @@ texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("4_1xcnr")
-Scene = ExtResource("7_3pt4j")
+SetMode = null
 
 [node name="text" type="Label" parent="UI/CanvasLayer/verticalSection/StatisticsButton"]
 layout_mode = 1
@@ -203,6 +199,7 @@ theme_override_font_sizes/font_size = 32
 text = "By Tiwex"
 
 [node name="ConfigFloatingWindow" type="NinePatchRect" parent="UI/CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -234,17 +231,12 @@ grow_horizontal = 0
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 
-[node name="closeButton" type="TextureButton" parent="UI/CanvasLayer/ConfigFloatingWindow/MarginContainer" node_paths=PackedStringArray("FloatingWindow")]
+[node name="closeButton" type="TextureButton" parent="UI/CanvasLayer/ConfigFloatingWindow/MarginContainer"]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("11_mxd2g")
-texture_pressed = ExtResource("12_0sxm5")
 ignore_texture_size = true
 stretch_mode = 5
-script = ExtResource("4_1xcnr")
-SetMode = 2
-FloatingWindow = NodePath("../..")
 
 [node name="X" type="Label" parent="UI/CanvasLayer/ConfigFloatingWindow/MarginContainer/closeButton"]
 layout_mode = 1
@@ -256,5 +248,17 @@ grow_vertical = 2
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 45
 text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UI_CanvasLayer_verticalSection_PlayButton#text" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 45
+text = "Jugar"
 horizontal_alignment = 1
 vertical_alignment = 1

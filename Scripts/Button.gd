@@ -3,7 +3,7 @@ extends TextureButton
 enum Mode { ChangeScene, OpenFloatingWindow, CloseFloatingWindow}
 
 @export var SetMode: Mode
-@export var Scene: PackedScene
+@export var ScenePath: String
 @export var FloatingWindow: Node
 
 func _ready():
@@ -12,7 +12,7 @@ func _ready():
 func _pressed():
 	match SetMode:
 		Mode.ChangeScene:
-			GlobalChangeScene.changeScene(Scene)
+			GlobalChangeScene.changeScene(ScenePath)
 		Mode.OpenFloatingWindow:
 			FloatingWindow.scale = Vector2.ZERO
 			FloatingWindow.visible = true
