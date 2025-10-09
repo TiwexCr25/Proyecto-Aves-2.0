@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalChangeScene="*res://Global/global_change_scene.gd"
+GlobalAudio="*res://Global/audio_global.tscn"
 
 [display]
 
