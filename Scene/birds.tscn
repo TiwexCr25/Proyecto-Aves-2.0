@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://6p0kn3qx0847"]
+[gd_scene load_steps=15 format=3 uid="uid://6p0kn3qx0847"]
 
 [ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_eryla"]
 [ext_resource type="Script" uid="uid://d12ey1eitmq0n" path="res://Scripts/canvas_layerOffsetCenter.gd" id="2_ykvkm"]
@@ -10,6 +10,10 @@
 [ext_resource type="Script" uid="uid://c68ae2vm5ehr" path="res://Scripts/Button.gd" id="5_uqowi"]
 [ext_resource type="Script" uid="uid://lqucebcesvku" path="res://Scripts/grid_container_Items_Birds_List.gd" id="5_yc5yl"]
 [ext_resource type="Texture2D" uid="uid://dbtm5cdpow75u" path="res://Resources/Images/portada/portadaLineal.png" id="7_yc5yl"]
+[ext_resource type="Texture2D" uid="uid://dei318te3r1rd" path="res://Resources/Buttons/UIsmall.png" id="11_yc5yl"]
+[ext_resource type="Script" uid="uid://y8vsjwufo2f0" path="res://Scripts/bird_viewer_floating_window.gd" id="12_n3vd4"]
+[ext_resource type="Texture2D" uid="uid://bslg1ykb0ij2p" path="res://Resources/Images/Accipiter cooperii.png" id="12_yr40i"]
+[ext_resource type="Texture2D" uid="uid://ctc28clsxgang" path="res://Resources/Sonograms/Anarhynchus nivosus.png" id="13_n3vd4"]
 
 [node name="Birds" type="Node2D"]
 
@@ -112,23 +116,14 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer" node_paths=PackedStringArray("spinBoxColumns")]
+[node name="GridContainer" type="GridContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer" node_paths=PackedStringArray("spinBoxColumns", "FloatingWindow")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 columns = 4
 script = ExtResource("5_yc5yl")
 spinBoxColumns = NodePath("../../../../MarginButtons/HBoxContainer/SpinBoxColumns")
-
-[node name="TextureButton" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("5_8xf3h")
-ignore_texture_size = true
-stretch_mode = 0
+FloatingWindow = NodePath("../../../../../../../BirdViewerFloatingWindow")
 
 [node name="TextureButton2" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
 custom_minimum_size = Vector2(25, 261)
@@ -442,5 +437,189 @@ grow_vertical = 2
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 30
 text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BirdViewerFloatingWindow" type="NinePatchRect" parent="UI/CanvasLayer/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.0
+offset_top = -304.5
+offset_right = 234.0
+offset_bottom = 304.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(234, 304)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("11_yc5yl")
+region_rect = Rect2(0, 0, 128, 128)
+patch_margin_left = 103
+patch_margin_top = 106
+patch_margin_right = 102
+patch_margin_bottom = 106
+script = ExtResource("12_n3vd4")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer"]
+layout_mode = 2
+
+[node name="textCiN" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Nombre Científico"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inputCiN" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0.24313726, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "????????????????????????????????"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="textCoN" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Nombre Común"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inputCoN" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0.24313726, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "????????????????????????????????"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="textF" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Familia"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inputF" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0.24313726, 1, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "????????????????????????????????"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inputImage" type="TextureRect" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture = ExtResource("12_yr40i")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="inputSonogram" type="TextureButton" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("13_n3vd4")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="buttons" type="HBoxContainer" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 65
+alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer/buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 120)
+layout_mode = 2
+texture_normal = ExtResource("3_t5xrh")
+texture_pressed = ExtResource("4_o6eyk")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_uqowi")
+SetMode = 4
+FunctionString = "back"
+
+[node name="text" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer/buttons/BackButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+text = "<"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer/buttons" node_paths=PackedStringArray("FloatingWindow")]
+custom_minimum_size = Vector2(80, 120)
+layout_mode = 2
+texture_normal = ExtResource("3_t5xrh")
+texture_pressed = ExtResource("4_o6eyk")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_uqowi")
+SetMode = 2
+FloatingWindow = NodePath("../../../..")
+
+[node name="text" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer/buttons/ExitButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="TextureButton" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer/buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 120)
+layout_mode = 2
+texture_normal = ExtResource("3_t5xrh")
+texture_pressed = ExtResource("4_o6eyk")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_uqowi")
+SetMode = 4
+FunctionString = "next"
+
+[node name="text" type="Label" parent="UI/CanvasLayer/Control/BirdViewerFloatingWindow/MarginContainer/VBoxContainer/buttons/NextButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+text = ">"
 horizontal_alignment = 1
 vertical_alignment = 1

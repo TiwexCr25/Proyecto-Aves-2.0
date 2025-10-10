@@ -1,10 +1,11 @@
 extends TextureButton
 
-enum Mode { ChangeScene, OpenFloatingWindow, CloseFloatingWindow, CloseGame}
+enum Mode { ChangeScene, OpenFloatingWindow, CloseFloatingWindow, CloseGame, Function}
 
 @export var SetMode: Mode
 @export var ScenePath: String
 @export var FloatingWindow: Node
+@export var FunctionString: String
 
 func _ready():
 	pass
@@ -25,3 +26,5 @@ func _pressed():
 			tween.tween_property(FloatingWindow,"scale",Vector2.ZERO,0.2).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 		Mode.CloseGame:
 			get_tree().quit()
+		Mode.Function:
+			GlobalSignals.emit_signal("ButtonPressed",FunctionString)

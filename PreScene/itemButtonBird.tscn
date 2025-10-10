@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c38ay7vlpkmbi"]
+
+[ext_resource type="Texture2D" uid="uid://cn8n4th5gg07v" path="res://Resources/Images/Buteo albonotatus.png" id="1_2pt4t"]
+
+[node name="TextureButton" type="TextureButton"]
+clip_contents = true
+custom_minimum_size = Vector2(25, 261)
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("1_2pt4t")
+ignore_texture_size = true
+stretch_mode = 0
