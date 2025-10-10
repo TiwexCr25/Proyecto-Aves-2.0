@@ -100,6 +100,7 @@ texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true
 stretch_mode = 4
 script = ExtResource("4_1xcnr")
+ScenePath = "res://Scene/birds.tscn"
 
 [node name="text" type="Label" parent="UI/CanvasLayer/Control/verticalSection/BirthButton"]
 layout_mode = 1

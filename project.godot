@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalChangeScene="*res://Global/global_change_scene.gd"
 GlobalAudio="*res://Global/audio_global.tscn"
+GlobalAves="*res://Global/global_aves.gd"
 
 [display]
 

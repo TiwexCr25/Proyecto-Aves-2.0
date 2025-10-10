@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://6p0kn3qx0847"]
+[gd_scene load_steps=11 format=3 uid="uid://6p0kn3qx0847"]
 
 [ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_eryla"]
+[ext_resource type="Script" uid="uid://d12ey1eitmq0n" path="res://Scripts/canvas_layerOffsetCenter.gd" id="2_ykvkm"]
+[ext_resource type="Texture2D" uid="uid://dhy0xneb7011e" path="res://Resources/Buttons/Botones Pequeños/UI-3.png" id="3_t5xrh"]
+[ext_resource type="Texture2D" uid="uid://chcxvl0s5txbl" path="res://Resources/Buttons/Botones Largos/UI-03.png" id="3_uqowi"]
+[ext_resource type="Texture2D" uid="uid://cd6u11lixss4n" path="res://Resources/Buttons/Botones Largos/UI-04.png" id="4_8xf3h"]
+[ext_resource type="Texture2D" uid="uid://bv856t1d64mll" path="res://Resources/Buttons/Botones Pequeños/UI-4.png" id="4_o6eyk"]
+[ext_resource type="Texture2D" uid="uid://bujetly7tx6v0" path="res://Resources/Images/portada/portadaCartas.png" id="5_8xf3h"]
+[ext_resource type="Script" uid="uid://c68ae2vm5ehr" path="res://Scripts/Button.gd" id="5_uqowi"]
+[ext_resource type="Script" uid="uid://lqucebcesvku" path="res://Scripts/grid_container_Items_Birds_List.gd" id="5_yc5yl"]
+[ext_resource type="Texture2D" uid="uid://dbtm5cdpow75u" path="res://Resources/Images/portada/portadaLineal.png" id="7_yc5yl"]
 
 [node name="Birds" type="Node2D"]
 
@@ -16,8 +25,24 @@ texture = ExtResource("1_eryla")
 expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+offset = Vector2(576, 324)
+transform = Transform2D(1, 0, 0, 1, 576, 324)
+script = ExtResource("2_ykvkm")
 
-[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer"]
+[node name="Control" type="Control" parent="UI/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -28,12 +53,394 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/CanvasLayer/MarginContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="UI/CanvasLayer/Control/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="UI/CanvasLayer/MarginContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginButtons" type="MarginContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginButtons"]
+layout_mode = 2
+
+[node name="textColumns" type="Label" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginButtons/HBoxContainer"]
+layout_mode = 2
+text = "Columnas: "
+
+[node name="SpinBoxColumns" type="SpinBox" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginButtons/HBoxContainer"]
+layout_mode = 2
+min_value = 4.0
+max_value = 25.0
+value = 4.0
+alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginButtons/HBoxContainer"]
+custom_minimum_size = Vector2(130, 35)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_uqowi")
+texture_pressed = ExtResource("4_8xf3h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="MarginPanel" type="MarginContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Panel" type="PanelContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="GridContainer" type="GridContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer" node_paths=PackedStringArray("spinBoxColumns")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+columns = 4
+script = ExtResource("5_yc5yl")
+spinBoxColumns = NodePath("../../../../MarginButtons/HBoxContainer/SpinBoxColumns")
+
+[node name="TextureButton" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("5_8xf3h")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton2" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton3" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton4" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton5" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton6" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton7" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton8" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton9" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("5_8xf3h")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton10" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton11" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton12" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton13" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton14" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton15" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton16" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton17" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("5_8xf3h")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton18" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton19" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton20" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton21" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton22" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton23" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton24" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton25" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("5_8xf3h")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton26" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton27" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton28" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton29" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton30" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 261)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton31" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureButton32" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
+custom_minimum_size = Vector2(25, 260)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yc5yl")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginCloseButton" type="MarginContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "Birds"
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+
+[node name="closeButton" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/MarginCloseButton"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_t5xrh")
+texture_pressed = ExtResource("4_o6eyk")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_uqowi")
+ScenePath = "res://Scene/main.tscn"
+
+[node name="X" type="Label" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/MarginCloseButton/closeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 30
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
