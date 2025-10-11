@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://6p0kn3qx0847"]
+[gd_scene load_steps=14 format=3 uid="uid://6p0kn3qx0847"]
 
 [ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_eryla"]
 [ext_resource type="Script" uid="uid://d12ey1eitmq0n" path="res://Scripts/canvas_layerOffsetCenter.gd" id="2_ykvkm"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://chcxvl0s5txbl" path="res://Resources/Buttons/Botones Largos/UI-03.png" id="3_uqowi"]
 [ext_resource type="Texture2D" uid="uid://cd6u11lixss4n" path="res://Resources/Buttons/Botones Largos/UI-04.png" id="4_8xf3h"]
 [ext_resource type="Texture2D" uid="uid://bv856t1d64mll" path="res://Resources/Buttons/Botones Pequeños/UI-4.png" id="4_o6eyk"]
-[ext_resource type="Texture2D" uid="uid://bujetly7tx6v0" path="res://Resources/Images/portada/portadaCartas.png" id="5_8xf3h"]
 [ext_resource type="Script" uid="uid://c68ae2vm5ehr" path="res://Scripts/Button.gd" id="5_uqowi"]
 [ext_resource type="Script" uid="uid://lqucebcesvku" path="res://Scripts/grid_container_Items_Birds_List.gd" id="5_yc5yl"]
 [ext_resource type="Texture2D" uid="uid://dbtm5cdpow75u" path="res://Resources/Images/portada/portadaLineal.png" id="7_yc5yl"]
@@ -84,6 +83,7 @@ value = 4.0
 alignment = 1
 
 [node name="TextureButton" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginButtons/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(130, 35)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -116,17 +116,20 @@ layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="GridContainer" type="GridContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer" node_paths=PackedStringArray("spinBoxColumns", "FloatingWindow")]
+[node name="GridContainer" type="GridContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer" node_paths=PackedStringArray("spinBoxColumns", "textLoading", "FloatingWindow")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 columns = 4
 script = ExtResource("5_yc5yl")
 spinBoxColumns = NodePath("../../../../MarginButtons/HBoxContainer/SpinBoxColumns")
+textLoading = NodePath("../../../textLoaded")
+currentBirdLoaded = null
+maxBirds = null
 FloatingWindow = NodePath("../../../../../../../BirdViewerFloatingWindow")
 
 [node name="TextureButton2" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
+custom_minimum_size = Vector2(25, 266)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -134,278 +137,13 @@ texture_normal = ExtResource("7_yc5yl")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="TextureButton3" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
+[node name="textLoaded" type="Label" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel"]
+self_modulate = Color(1, 0.65882355, 0.09019608, 1)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton4" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton5" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton6" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton7" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton8" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton9" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("5_8xf3h")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton10" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton11" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton12" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton13" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton14" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton15" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton16" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton17" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("5_8xf3h")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton18" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton19" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton20" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton21" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton22" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton23" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton24" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton25" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-clip_contents = true
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("5_8xf3h")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton26" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton27" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton28" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton29" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton30" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 261)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton31" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="TextureButton32" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginPanel/MarginContainer/ScrollContainer/GridContainer"]
-custom_minimum_size = Vector2(25, 260)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
-texture_normal = ExtResource("7_yc5yl")
-ignore_texture_size = true
-stretch_mode = 0
+size_flags_vertical = 0
+text = "Cargando todos los datos (9999/9999)"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MarginCloseButton" type="MarginContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer"]
 layout_mode = 2
