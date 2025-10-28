@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Proyecto Aves 2.0"
+config/tags=PackedStringArray("working")
 run/main_scene="uid://bl4xgrtahs5m4"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -21,6 +22,7 @@ GlobalChangeScene="*res://Global/global_change_scene.gd"
 GlobalAudio="*res://Global/audio_global.tscn"
 GlobalAves="*res://Global/global_aves.gd"
 GlobalSignals="*res://Global/global_signals.gd"
+GlobalLoader="*res://Global/loader.tscn"
 
 [display]
 

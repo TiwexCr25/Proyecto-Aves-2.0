@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsh5a5xjd6e04"]
+
+[ext_resource type="Script" uid="uid://bbrlqybsi5cfl" path="res://Global/global_load.gd" id="1_cwcwk"]
+
+[node name="Loader" type="CanvasLayer"]
+script = ExtResource("1_cwcwk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="textLoading" type="Label" parent="MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Cargando Datos 9999 de 9999"
+horizontal_alignment = 1
+vertical_alignment = 1

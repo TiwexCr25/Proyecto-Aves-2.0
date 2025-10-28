@@ -1,10 +1,8 @@
 extends Node
 
-signal BirdLoaded(value:Ave)
-signal AllBirdsLoaded()
-
 @export var firstLoadOfTheProgram:bool = true
 var loading:bool = false
+var AllLoaded:bool = false
 
 var current_index:int = 0
 
@@ -63,43 +61,23 @@ func _process(_delta):
 	if loading and current_index < routes_to_load.size():
 		var route = routes_to_load[current_index]
 		var ave = ResourceLoader.load(route) as Ave
-		BirdLoaded.emit(ave)
 		if ave != null:
+			GlobalSignals.BirdLoaded.emit(ave)
 			lista_aves_totales.append(ave)
 		else:
 			print("No se pudo cargar: ", route)
 		current_index += 1
 	elif loading and current_index >= routes_to_load.size():
 		loading = false
-		AllBirdsLoaded.emit()
+		GlobalSignals.AllBirdsLoaded.emit()
+		AllLoaded = true
 		print("Todas las aves cargadas")
 		firstLoadOfTheProgram = true
 
-func cargarTodo():
+func cargarTodo(): # relacionado con _process
 	lista_aves_totales.clear()
-	var dir = DirAccess.open("res://Resources/Birds/")
-	if dir == null:
-		push_error("No se pudo abrir el directorio res://Resources/Birds/")
-		return
-	var mayor_num = 0
-	dir.list_dir_begin()
-	while true:
-		var archivo = dir.get_next()
-		if archivo == "":
-			break
-		if archivo.ends_with(".tres") and archivo.is_valid_filename():
-			var nombre_sin_ext = archivo.get_basename()
-			var numero = nombre_sin_ext.to_int()
-			if numero > mayor_num:
-				mayor_num = numero
-	dir.list_dir_end()
-	for i in range(1, mayor_num + 1):
-		var ruta = "res://Resources/Birds/%d.tres" % i
-		var ave = ResourceLoader.load(ruta)
-		if ave != null:
-			lista_aves_totales.append(ave)
-		else:
-			print("No se pudo cargar: ", ruta)
+	loading = true
+	current_index = 0
 
 func get_routes():
 	routes_to_load.clear()
