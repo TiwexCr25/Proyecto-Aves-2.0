@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://6p0kn3qx0847"]
+[gd_scene load_steps=15 format=3 uid="uid://6p0kn3qx0847"]
 
 [ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_eryla"]
 [ext_resource type="Script" uid="uid://d12ey1eitmq0n" path="res://Scripts/canvas_layerOffsetCenter.gd" id="2_ykvkm"]
@@ -12,6 +12,12 @@
 [ext_resource type="Script" uid="uid://y8vsjwufo2f0" path="res://Scripts/bird_viewer_floating_window.gd" id="12_n3vd4"]
 [ext_resource type="Texture2D" uid="uid://bslg1ykb0ij2p" path="res://Resources/Images/Accipiter cooperii.png" id="12_yr40i"]
 [ext_resource type="Texture2D" uid="uid://ctc28clsxgang" path="res://Resources/Sonograms/Anarhynchus nivosus.png" id="13_n3vd4"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_gq530"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_yr40i"]
+events = [SubResource("InputEventKey_gq530")]
 
 [node name="Birds" type="Node2D"]
 
@@ -147,6 +153,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_yr40i")
 texture_normal = ExtResource("3_t5xrh")
 texture_pressed = ExtResource("4_o6eyk")
 ignore_texture_size = true

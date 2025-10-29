@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk2bko3axqr1u"]
+[gd_scene load_steps=11 format=3 uid="uid://dk2bko3axqr1u"]
 
 [ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_d31jc"]
 [ext_resource type="Script" uid="uid://d12ey1eitmq0n" path="res://Scripts/canvas_layerOffsetCenter.gd" id="2_6grx1"]
@@ -7,6 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://bv856t1d64mll" path="res://Resources/Buttons/Botones Pequeños/UI-4.png" id="4_keb55"]
 [ext_resource type="Texture2D" uid="uid://dbtm5cdpow75u" path="res://Resources/Images/portada/portadaLineal.png" id="4_yy83c"]
 [ext_resource type="Script" uid="uid://c68ae2vm5ehr" path="res://Scripts/Button.gd" id="5_yy83c"]
+[ext_resource type="Texture2D" uid="uid://ddqj53m7xhv07" path="res://Resources/Buttons/Botones Pequeños/play.png" id="7_yy83c"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_yy83c"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_q8xwb"]
+events = [SubResource("InputEventKey_yy83c")]
 
 [node name="Lobby" type="Node2D"]
 
@@ -20,6 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_d31jc")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
 offset = Vector2(576, 324)
@@ -109,8 +117,33 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="TextureButton" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/PanelContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+texture_normal = ExtResource("3_6grx1")
+texture_pressed = ExtResource("4_keb55")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_yy83c")
+ScenePath = "res://Scene/Games/MemoryGame/ConfigMemoryGame.tscn"
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/PanelContainer/VBoxContainer/PanelContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/PanelContainer/VBoxContainer/PanelContainer/TextureButton/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_yy83c")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="PanelContainer2" type="PanelContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -140,6 +173,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_q8xwb")
 texture_normal = ExtResource("3_6grx1")
 texture_pressed = ExtResource("4_keb55")
 ignore_texture_size = true

@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://bn2wr4nwakgdu"]
+
+[ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_ny316"]
+[ext_resource type="Script" uid="uid://d12ey1eitmq0n" path="res://Scripts/canvas_layerOffsetCenter.gd" id="2_4g3g3"]
+[ext_resource type="Texture2D" uid="uid://dhy0xneb7011e" path="res://Resources/Buttons/Botones Pequeños/UI-3.png" id="3_jrfd1"]
+[ext_resource type="Texture2D" uid="uid://bv856t1d64mll" path="res://Resources/Buttons/Botones Pequeños/UI-4.png" id="4_nlule"]
+[ext_resource type="Script" uid="uid://c68ae2vm5ehr" path="res://Scripts/Button.gd" id="5_qwcyh"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ny316"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_4g3g3"]
+events = [SubResource("InputEventKey_ny316")]
+
+[node name="ConfigMemoryGame" type="Node2D"]
+
+[node name="UI" type="Node" parent="."]
+
+[node name="Background" type="TextureRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ny316")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+offset = Vector2(576, 324)
+transform = Transform2D(1, 0, 0, 1, 576, 324)
+script = ExtResource("2_4g3g3")
+
+[node name="Control" type="Control" parent="UI/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/CanvasLayer/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Title" type="Label" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Configuracion antes de jugar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+color = Color(0, 0, 0, 0.5568628)
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="closeButton" type="TextureButton" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+shortcut = SubResource("Shortcut_4g3g3")
+texture_normal = ExtResource("3_jrfd1")
+texture_pressed = ExtResource("4_nlule")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("5_qwcyh")
+ScenePath = "res://Scene/lobby.tscn"
+
+[node name="X" type="Label" parent="UI/CanvasLayer/Control/MarginContainer/PanelContainer/MarginContainer2/closeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 30
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1

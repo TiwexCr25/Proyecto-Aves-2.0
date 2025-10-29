@@ -8,6 +8,7 @@ enum Mode { ChangeScene, OpenFloatingWindow, CloseFloatingWindow, CloseGame, Fun
 @export var FunctionString: String
 
 func _ready():
+	focus_mode = Control.FOCUS_NONE
 	pass
 
 func _pressed():

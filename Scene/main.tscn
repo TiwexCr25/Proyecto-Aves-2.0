@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl4xgrtahs5m4"]
+[gd_scene load_steps=13 format=3 uid="uid://bl4xgrtahs5m4"]
 
 [ext_resource type="Texture2D" uid="uid://ddufnwip5smq5" path="res://Resources/Background/gettyimages-1192861290-640x640.jpg" id="1_f6udf"]
 [ext_resource type="Script" uid="uid://d12ey1eitmq0n" path="res://Scripts/canvas_layerOffsetCenter.gd" id="2_3pt4j"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://dhy0xneb7011e" path="res://Resources/Buttons/Botones Pequeños/UI-3.png" id="8_c2iwn"]
 [ext_resource type="Texture2D" uid="uid://bv856t1d64mll" path="res://Resources/Buttons/Botones Pequeños/UI-4.png" id="9_3pt4j"]
 [ext_resource type="Texture2D" uid="uid://dei318te3r1rd" path="res://Resources/Buttons/UIsmall.png" id="10_3pt4j"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3pt4j"]
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_7y4ci"]
+events = [SubResource("InputEventKey_3pt4j")]
 
 [node name="Main" type="Node2D"]
 
@@ -148,6 +154,7 @@ custom_minimum_size = Vector2(150, 78)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+shortcut = SubResource("Shortcut_7y4ci")
 texture_normal = ExtResource("2_r34rm")
 texture_pressed = ExtResource("3_2wwxx")
 ignore_texture_size = true

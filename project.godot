@@ -23,6 +23,7 @@ GlobalAudio="*res://Global/audio_global.tscn"
 GlobalAves="*res://Global/global_aves.gd"
 GlobalSignals="*res://Global/global_signals.gd"
 GlobalLoader="*res://Global/loader.tscn"
+GlobalInput="*res://Global/global_input.gd"
 
 [display]
 

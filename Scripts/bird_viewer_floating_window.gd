@@ -1,6 +1,5 @@
 extends NinePatchRect
 
-var lista_aves: Array[Ave] = []
 var ave: Ave
 
 @onready var cientific_name = %inputCiN
@@ -19,16 +18,14 @@ func _ready():
 	add_child(player)
 
 func _on_boton_button_pressed(value: String):
-	if lista_aves.is_empty():
-		return
-	var index = lista_aves.find(ave)
+	var index = GlobalAves.lista_aves_totales.find(ave)
 	if index == -1:
 		index = 0
 	if value == "back" and index > 0:
 		index -= 1
-	elif value == "next" and index < lista_aves.size() - 1:
+	elif value == "next" and index < GlobalAves.lista_aves_totales.size() - 1:
 		index += 1
-	view_bird(lista_aves[index])
+	view_bird(GlobalAves.lista_aves_totales[index])
 	if index == 0:
 		backButton.disabled = true
 		backButton.self_modulate.a = 0.5
@@ -36,7 +33,7 @@ func _on_boton_button_pressed(value: String):
 		backButton.disabled = false
 		backButton.self_modulate.a = 1
 	
-	if index == lista_aves.size() - 1:
+	if index == GlobalAves.lista_aves_totales.size() - 1:
 		nextButton.disabled = true
 		nextButton.self_modulate.a = 0.5
 	else:
